@@ -28,5 +28,21 @@ public class CalculatorTest {
     public void testMultipleNumbers(){
     	assertEquals(6, Calculator.add("1,2,3"));
     }
+    // 3rd Kata step
+    
+    @Test
+    public void testNewLineDelimiter() {
+        assertEquals(3, Calculator.add("1/n2"));
+    }
+    @Test
+    public void testNewlineDelimiter() {
+        assertEquals(60, Calculator.add("10/n20/n30"));
+    }
+    @Test
+    public void testNewlineAndComma() {
+        assertEquals(10, Calculator.add("3/n5,2"));
+    }
+    
+
 
 }
