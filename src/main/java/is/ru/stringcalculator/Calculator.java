@@ -9,6 +9,9 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(text.contains("-")) {
+			return negative(text);
+		}
 		else if(text.startsWith("//")) {
 			return sum(specificDelimiter(text));
 		}
@@ -18,7 +21,13 @@ public class Calculator {
 		else
 			return toInt(text);
 	}
-    // If there is a specific delimiter, determine the delimiter using regex
+    private static int negative(String text) {
+    	Matcher m = Pattern.compile("(-[0-9])").matcher(text);
+    	m.matches();
+    	System.out.println("Negatives not allowed: " + m.group(1));
+		return 0;
+	}
+	// If there is a specific delimiter, determine the delimiter using regex
     // and split using that specific delimiter
     private static String[] specificDelimiter(String specific) {        
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(specific);
