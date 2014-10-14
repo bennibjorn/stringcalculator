@@ -18,7 +18,11 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers){
-	    return numbers.split(",");
+		String[] split = null;
+        if (numbers.contains(",") && numbers.contains("/n")) split = numbers.split(("/n|\\,"));
+        else if (numbers.contains(",") && !(numbers.contains("/n"))) split = numbers.split(",");
+        else if (numbers.contains("/n") && !(numbers.contains(","))) split = numbers.split("/n");
+        return split;
 	}
       
     private static int sum(String[] numbers){
