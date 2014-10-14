@@ -18,6 +18,10 @@ public class CalculatorTest {
 	public void testOneNumber() {
 		assertEquals(1, Calculator.add("1"));
 	}
+	@Test
+	public void testOneNumber2() {
+		assertEquals(2, Calculator.add("2"));
+	}
 
 	@Test
 	public void testTwoNumbers() {
@@ -42,7 +46,12 @@ public class CalculatorTest {
     public void testNewlineAndComma() {
         assertEquals(10, Calculator.add("3/n5,2"));
     }
-    
-
-
+    @Test
+    public void testDifferentDelimiter() {
+        assertEquals(3, Calculator.add("//;\n1;2"));
+    }
+    @Test
+    public void testDifferentDelimiter2() {
+        assertEquals(6, Calculator.add("//;\n1;2;3"));
+    }
 }
