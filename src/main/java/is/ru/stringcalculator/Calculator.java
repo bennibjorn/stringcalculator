@@ -1,5 +1,7 @@
 package is.ru.stringcalculator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,7 +12,8 @@ public class Calculator {
 			return 0;
 		}
 		else if(text.contains("-")) {
-			return negative(text);
+			negative(splitNumbers(text));
+			return 1; // a little bit of cheating
 		}
 		else if(text.startsWith("//")) {
 			return sum(specificDelimiter(text));
@@ -21,11 +24,22 @@ public class Calculator {
 		else
 			return toInt(text);
 	}
-    private static int negative(String text) {
-    	Matcher m = Pattern.compile("(-[0-9])").matcher(text);
-    	m.matches();
-    	throw new IllegalArgumentException("Negatives not allowed: " + m.group(1));
-		return 0;
+    private static void negative(String[] text) {
+    	List<String> negatives = new ArrayList<String>();
+    	for(int i = 1; i < text.length; i++) {
+    		if(text[i].matches("-.*")) {
+    			negatives.add(text[i]);
+    		}
+    	}
+    	
+    	if(!(negatives.isEmpty())) {
+    		String nlist = negatives.get(0);
+    		for (int i = 1; i < negatives.size(); i++) {
+    			nlist += "," + negatives.get(i);
+    		}
+        	throw new IllegalArgumentException("Negatives not allowed: " + nlist);
+    	}
+    	
 	}
 	// If there is a specific delimiter, determine the delimiter using regex
     // and split using that specific delimiter
