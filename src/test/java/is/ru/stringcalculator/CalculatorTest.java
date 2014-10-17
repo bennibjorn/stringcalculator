@@ -64,7 +64,7 @@ public class CalculatorTest {
     }
     @Test
     public void testOver1000() {
-    	assertEquals(1, Calculator.add("1, 1001"));
+    	assertEquals(1, Calculator.add("1,1001"));
     }
     @Test
     public void testOver1000again() {
