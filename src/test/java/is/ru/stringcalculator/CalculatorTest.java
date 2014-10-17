@@ -70,5 +70,13 @@ public class CalculatorTest {
     public void testOver1000again() {
     	assertEquals(6, Calculator.add("1,2,3,5000"));
     }
+    @Test
+    public void testAnyLengthDelimitors() {
+    	assertEquals(3, Calculator.add("//;;;\n1;;;2"));
+    }
+    @Test
+    public void testAnyLengthDelimitors2() {
+    	assertEquals(6, Calculator.add("//****\n1****2****3"));
+    }
 
 }
