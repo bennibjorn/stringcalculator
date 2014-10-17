@@ -24,7 +24,7 @@ public class Calculator {
     private static int negative(String text) {
     	Matcher m = Pattern.compile("(-[0-9])").matcher(text);
     	m.matches();
-    	System.out.println("Negatives not allowed: " + m.group(1));
+    	throw new IllegalArgumentException("Negatives not allowed: " + m.group(1));
 		return 0;
 	}
 	// If there is a specific delimiter, determine the delimiter using regex
